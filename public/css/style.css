@@ -1,0 +1,133 @@
+body {
+    background-color: #fff;
+}
+
+.navbar {
+    background-color: #fff;
+}
+
+.jumbotron {
+    background-image: url('images/3652872.jpg');
+    height: 150%;
+    padding: 10%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner-heading {
+    margin: 5rem;
+    margin-bottom: 0%;
+}
+
+.navbar .collapse .navbar-nav .nav-link {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+#statesForm {
+    margin: 3%;
+}
+
+.form-group .label-form {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    margin-top: 10px;
+    font-size: large;
+    border-radius: 15%;
+}
+
+.overview {
+    margin: 5%;
+}
+
+.overview-head,
+.overview-head {
+    margin: 3%;
+    margin-bottom: 0%;
+    font-weight: 500;
+    font-size: 35px;
+}
+
+.overview .overview-list .overview-item {
+    padding: 5%;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("images/fusion-medical-animation-rnr8D3FNUNY-unsplash.jpg");
+    /* Full height */
+    height: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax .precutions-head {
+    color: #fff;
+    margin: 5%;
+    margin-bottom: 0%;
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.precautions-item {
+    color: #fff;
+    padding: 5%;
+}
+
+.symptoms-list {
+    padding: 4%;
+}
+
+.symptoms-item {
+    padding: 2%;
+}
+
+.parallax2 {
+    background-color: #E5F1FF;
+    padding: 10%;
+    padding-bottom: 5%;
+}
+
+.table {
+    padding: 2%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#social-media {
+    text-align: center;
+    color: #000000;
+    padding-top: 5%;
+}
+
+.fa:hover {
+    color: #e94560;
+}
+
+.social-icon,
+.fa-3x {
+    color: #000000;
+    word-spacing: 30px;
+}
+
+.social-icon-h3 {
+    margin-top: 20px;
+}
+
+.contact-icon {
+    word-spacing: 5px;
+}

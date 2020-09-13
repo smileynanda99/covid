@@ -1,0 +1,247 @@
+<%- include("partials/header") -%>
+
+    <div class="jumbotron" style="background-image: url('images/3652872.jpg');">
+        <div class="nav-wrapper transparent">
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+                <a class="navbar-brand" href="index.html"><img src="images/covidlogo.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/gragh">Stats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/notification">Advisory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/hostpitality">Hospitals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/helpline">Helpline</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- Thanks to Joanna Kosinska for sharing their work on Unsplash. -->
+            <!-- banner starts here -->
+        </div>
+        <div class="container">
+            <div class="row banner-heading d-flex justify-content-center align-item-center">
+                <h1>COVID-19</h1><br />
+            </div>
+            <div class="row ml-2 d-flex justify-content-center text-center">
+                <h3>
+                    Keep Calm and Wash Your Hands
+                </h3>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <form action="" id="statesForm">
+                    <div class="form-group row">
+                        <label class="col-sm-4 mt-2 label-form" for="sel1">Select State:</label>
+                        <select class="form-control col-sm-8" name="state" id="state" class="form-control">
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                        <option value="Daman and Diu">Daman and Diu</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Puducherry">Puducherry</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                        </select>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <button type="submit" class="btn btn-primary">Get Data</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <h2 class="overview-head">COVID-19 Overview</h2>
+        </div>
+        <div class="row overview">
+            <div class="overview-image col-md-6 col-12 text-center">
+                <div class="image-section">
+                    <img src="images/pexels.jpeg" />
+                </div>
+            </div>
+            <div class="overview-list align-item-center col-md-6 col-12 text-center">
+                <div class="row">
+                    <div class="overview-item col-md-6 col-12">
+                        <h4>Total Cases</h4>
+                        <h2>4567893</h2>
+                    </div>
+                    <div class="overview-item col-md-6 col-12">
+                        <h4>Total Cases</h4>
+                        <h2>4567893</h2>
+                    </div>
+                    <div class="overview-item col-md-6 col-12">
+                        <h4>Total Cases</h4>
+                        <h2>4567893</h2>
+                    </div>
+                    <div class="overview-item col-md-6 col-12">
+                        <h4>Total Cases</h4>
+                        <h2>4567893</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid parallax" style="background-image: url( images/fusion-medical-animation-rnr8D3FNUNY-unsplash.jpg );">
+        <div class="row justify-content-center ">
+            <h2 class="precutions-head">Precautions</h2>
+        </div>
+        <div class="row precautions-list justify-content-center">
+            <div class="precautions-item col-md-3 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-cloud fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                </div>
+            </div>
+            <div class="precautions-item col-md-3 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                </div>
+            </div>
+            <div class="precautions-item col-md-3 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                </div>
+            </div>
+            <div class="precautions-item col-md-3 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2 class="symptoms-head">Coronavirus Symptoms</h2>
+        </div>
+        <div class="row symptoms-list">
+            <div class="symptoms-item col-lg-4 col-md-6 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected Duskam is humour</p>
+                </div>
+            </div>
+            <div class="symptoms-item col-lg-4 col-md-6 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-cloud fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected Duskam is humour</p>
+                </div>
+            </div>
+            <div class="symptoms-item col-lg-4 col-md-6 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected Duskam is humour</p>
+                </div>
+            </div>
+            <div class="symptoms-item col-lg-4 col-md-6 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected Duskam is humour</p>
+                </div>
+            </div>
+            <div class="symptoms-item col-lg-4 col-md-6 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected Duskam is humour</p>
+                </div>
+            </div>
+            <div class="symptoms-item col-lg-4 col-md-6 col-12 text-center">
+                <div class="image-section">
+                    <i class="fas fa-temperature-high fa-4x"></i>
+                </div>
+                <div class="text-section">
+                    <h4>High Fever</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected Duskam is humour</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row text-center justify-content-center">
+                <p>Copyright © Team.js All Rights Reserves</p>
+            </div>
+        </div>
+    </footer>
+    <!-- script -->
+    <script src="./assets/js/jquerry.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script>
+        $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+            if (scroll < 200) {
+                $('.navbar').css('background', 'transparent');
+            } else {
+                $('.navbar').css('background', '#fff');
+            }
+        });
+    </script>
+    </body>
+
+    </html>
