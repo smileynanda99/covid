@@ -99,9 +99,9 @@
             </div>
             <div class="form-group col-md-5 col-sm-10">
                 <label for="inputPassword4">Type:</label>
-                <select class="form-control" name="type" id="type" class="form-control">
+                <select class="form-control" name="type" id="type" class="form-control" required>
                     <option value="Govt.">Govt.</option>
-                    <option value="Gove-Society">Gove-Society</option>
+                    <option value="Govt-Society">Govt-Society</option>
                     <option value="Private">Private</option>
                     <option value="Univercity">Univercity</option>
                     <option value="Turst">Turst</option>
@@ -109,7 +109,7 @@
                 </select>
             </div>
             <div class="form-group col-md-1 col-sm-2">
-                <button class="btn btn-success" style="margin-top: 30px;" onclick="getList()">GET</button>
+                <button class="btn btn-success" style="margin-top: 30px;" id="college">GET</button>
             </div>
         </div>
         <div class="row table">
@@ -145,29 +145,26 @@
         $(document).ready(function() {
 
 
-            function getList() {
-                var url = "https://api.rootnet.in/covid19-in/hospitals/medical-colleges";
-                $.getJSON(url, function(data) {
-                    var helpData = '';
-                    var state = $("#states").value;
-                    var type = $("#type").value;
-                    console.log(state, type);
-                    $.each(data.data.medicalColleges, (key, value) => {
-                        // if(value.state)
-                        // helpData += '<tr>';
-                        // helpData += '<th>' + value.state + '</th>';
-                        // helpData += '<th>' + value.name + '</th>';
-                        // helpData += '<th>' + value.city + '</th>';
-                        // helpData += '<th>' + value.ownership + '</th>';
-                        // helpData += '<th>' + value.admissionCapacity + '</th>';
-                        // helpData += '<th>' + value.hospitalBeds + '</th>';
-                        // helpData += '</tr>';
 
-                        // console.log(value.state);
-                    });
-                    $('#collegeTable').append(helpData);
+            var url = "https://api.rootnet.in/covid19-in/hospitals/medical-colleges";
+            $.getJSON(url, function(data) {
+                var helpData = '';
+                $.each(data.data.medicalColleges, (key, value) => {
+
+                    helpData += '<tr>';
+                    helpData += '<th>' + value.state + '</th>';
+                    helpData += '<th>' + value.name + '</th>';
+                    helpData += '<th>' + value.city + '</th>';
+                    helpData += '<th>' + value.ownership + '</th>';
+                    helpData += '<th>' + value.admissionCapacity + '</th>';
+                    helpData += '<th>' + value.hospitalBeds + '</th>';
+                    helpData += '</tr>';
+
+
                 });
-            };
+                $('#collegeTable').append(helpData);
+            });
+
 
             var url = "https://api.rootnet.in/covid19-in/hospitals/beds";
             $.getJSON(url, function(data) {
@@ -185,6 +182,34 @@
 
                 });
                 $('#hospitalTable').append(helpData);
+            });
+
+            $('#college').click(function() {
+
+                var url = "https://api.rootnet.in/covid19-in/hospitals/medical-colleges";
+                $.getJSON(url, function(data) {
+                    var helpData = '';
+
+
+                    $.each(data.data.medicalColleges, (key, value) => {
+
+                        if (value.state == $("#states option:selected").text() && value.ownership == $("#type option:selected").text()) {
+                            helpData += '<tr>';
+                            helpData += '<th>' + value.state + '</th>';
+                            helpData += '<th>' + value.name + '</th>';
+                            helpData += '<th>' + value.city + '</th>';
+                            helpData += '<th>' + value.ownership + '</th>';
+                            helpData += '<th>' + value.admissionCapacity + '</th>';
+                            helpData += '<th>' + value.hospitalBeds + '</th>';
+                            helpData += '</tr>';
+
+
+                        }
+                    });
+                    $('#collegeTable').html(helpData);
+                });
+
+
             });
 
 
