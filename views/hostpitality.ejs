@@ -31,6 +31,8 @@
         </div>
     </div>
     <div class="container" style="margin-top: 30px;">
+        <h1 style="font-family: 'Russo One', sans-serif;">Hospitals DashBoards:-</h1>
+        <h3>(A).Hospitals & Beds:-</h3>
         <div class="row table">
             <table class="table table-striped justify-content-center" id="hospitalTable">
                 <thead class="thead-dark">
@@ -42,6 +44,84 @@
                         <th scope="col">Urban Beds</th>
                         <th scope="col">Total Hospitals</th>
                         <th scope="col">Total Beds</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container" style="margin-top: 30px;">
+
+        <h3>(B).Medical Colleges & Beds:-</h3>
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-12">
+                <label for="state">State:</label>
+                <select class="form-control" name="states" id="states" class="form-control" required>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                    </select>
+            </div>
+            <div class="form-group col-md-5 col-sm-10">
+                <label for="inputPassword4">Type:</label>
+                <select class="form-control" name="type" id="type" class="form-control">
+                    <option value="Govt.">Govt.</option>
+                    <option value="Gove-Society">Gove-Society</option>
+                    <option value="Private">Private</option>
+                    <option value="Univercity">Univercity</option>
+                    <option value="Turst">Turst</option>
+                    <option value="Society">Society</option>
+                </select>
+            </div>
+            <div class="form-group col-md-1 col-sm-2">
+                <button class="btn btn-success" style="margin-top: 30px;" onclick="getList()">GET</button>
+            </div>
+        </div>
+        <div class="row table">
+            <table class="table table-striped justify-content-center" id="collegeTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">State Name</th>
+                        <th scope="col">Institute Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Admission Capacity</th>
+                        <th scope="col">Hospitals Beds</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -64,6 +144,31 @@
     <script>
         $(document).ready(function() {
 
+
+            function getList() {
+                var url = "https://api.rootnet.in/covid19-in/hospitals/medical-colleges";
+                $.getJSON(url, function(data) {
+                    var helpData = '';
+                    var state = $("#states").value;
+                    var type = $("#type").value;
+                    console.log(state, type);
+                    $.each(data.data.medicalColleges, (key, value) => {
+                        // if(value.state)
+                        // helpData += '<tr>';
+                        // helpData += '<th>' + value.state + '</th>';
+                        // helpData += '<th>' + value.name + '</th>';
+                        // helpData += '<th>' + value.city + '</th>';
+                        // helpData += '<th>' + value.ownership + '</th>';
+                        // helpData += '<th>' + value.admissionCapacity + '</th>';
+                        // helpData += '<th>' + value.hospitalBeds + '</th>';
+                        // helpData += '</tr>';
+
+                        // console.log(value.state);
+                    });
+                    $('#collegeTable').append(helpData);
+                });
+            };
+
             var url = "https://api.rootnet.in/covid19-in/hospitals/beds";
             $.getJSON(url, function(data) {
                 var helpData = '';
@@ -78,10 +183,13 @@
                     helpData += '<th>' + value.totalBeds + '</th>';
                     helpData += '</tr>';
 
-                    console.log(value.state);
                 });
                 $('#hospitalTable').append(helpData);
             });
+
+
+
+
 
         });
     </script>
