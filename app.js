@@ -10,8 +10,10 @@ const mongoose = require("mongoose");
 const port = 3000;
 
 const app = express();
+//default gragh data
 var dataArray = [7, 19, 33, 67, 37, 25, 39, 56, 42, 69];
 var labelArray = ["05/09/2020", "06/09/2020", "07/09/2020", "08/09/2020", "09/09/2020", "10/09/2020", "11/09/2020", "12/09/2020", "13/09/2020", "14/09/2020"];
+
 mongoose.connect("mongodb://localhost:27017/Covid19DB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
 const dataSchema = new mongoose.Schema({
@@ -68,24 +70,26 @@ app.post("/data", (req, res) => {
         for (var m = date1Array[1]; m <= date2Array[1]; m++) {
             if (m == date2Array[1]) {
                 for (d; d <= date2Array[2]; d++) {
+                    console.log(date = +"d");
                     var userDate = d + "/" + m + "/" + y;
                     Patient.find({ state: req.body.state, date: userDate, age: { $gt: age1, $lt: age2 } }, (err, result) => {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(state, userDate, age1 + " " + age2);
+                            // console.log(state, userDate, age1 + " " + age2);
                             console.log(result)
                         }
                     });
                 }
             } else {
                 for (d; d <= 31; d++) {
+                    console.log(date = +"d");
                     var userDate = d + "/" + m + "/" + y;
                     Patient.find({ state: req.body.state, date: userDate, age: { $gt: age1, $lt: age2 } }, (err, result) => {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(state, userDate, age1 + " " + age2);
+                            // console.log(state, userDate, age1 + " " + age2);
                             console.log(result)
                         }
                     });
