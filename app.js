@@ -14,7 +14,7 @@ const app = express();
 var dataArray = [7, 19, 33, 67, 37, 25, 39, 56, 42, 69];
 var labelArray = ["05/09/2020", "06/09/2020", "07/09/2020", "08/09/2020", "09/09/2020", "10/09/2020", "11/09/2020", "12/09/2020", "13/09/2020", "14/09/2020"];
 
-mongoose.connect("mongodb://localhost:27017/Covid19DB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://admin-teamJs:teamjs@99@cluster0.lxra1.mongodb.net/Covid19DB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
 const dataSchema = new mongoose.Schema({
     patientId: Number,
