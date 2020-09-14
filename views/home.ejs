@@ -91,31 +91,27 @@
     </div>
     <div class="container">
         <div class="row justify-content-center text-center">
-            <h2 class="overview-head">COVID-19 Overview</h2>
+            <h2 class="overview-head">COVID-19 Overview (INDIA)</h2>
         </div>
         <div class="row overview">
             <div class="overview-image col-md-6 col-12 text-center">
                 <div class="image-section">
-                    <img src="images/pexels.jpeg" />
+                    <img src="images/pexels.jpg" />
                 </div>
             </div>
-            <div class="overview-list align-item-center col-md-6 col-12 text-center">
+            <div class="overview-list align-item-center col-md-6 col-12 text-left">
                 <div class="row">
-                    <div class="overview-item col-md-6 col-12">
-                        <h4>Total Cases</h4>
-                        <h2>4567893</h2>
+                    <div class="overview-item col-lg-12">
+                        <h2>Total Confirmed Case:<span id="tcc"></span></h2>
+
                     </div>
-                    <div class="overview-item col-md-6 col-12">
-                        <h4>Total Cases</h4>
-                        <h2>4567893</h2>
+                    <div class="overview-item col-lg-12">
+                        <h2>Total Recovered Case:<span id="trc">45847</span></h2>
+
                     </div>
-                    <div class="overview-item col-md-6 col-12">
-                        <h4>Total Cases</h4>
-                        <h2>4567893</h2>
-                    </div>
-                    <div class="overview-item col-md-6 col-12">
-                        <h4>Total Cases</h4>
-                        <h2>4567893</h2>
+                    <div class="overview-item col-lg-12">
+                        <h2>Total Deceased Case:<span id="tdc">45847</span></h2>
+
                     </div>
                 </div>
             </div>
@@ -230,16 +226,31 @@
         </div>
     </footer>
     <!-- script -->
-    <script src="./assets/js/jquerry.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            if (scroll < 200) {
-                $('.navbar').css('background', 'transparent');
-            } else {
-                $('.navbar').css('background', '#fff');
-            }
+        $(document).ready(function() {
+
+            var url = "https://api.covid19india.org/data.json";
+            $.getJSON(url, function(data) {
+                var number = 1;
+                var helpData = '';
+                var info = data.cases_time_series[data.cases_time_series.length - 1];
+                $('#tcc').text(" " + info.totalconfirmed);
+                $('#trc').text(" " + info.totalrecovered);
+                $('#tdc').text(" " + info.totaldeceased);
+
+
+            });
+
+            $(window).scroll(function() {
+                var scroll = $(window).scrollTop();
+                if (scroll < 200) {
+                    $('.navbar').css('background', 'transparent');
+                } else {
+                    $('.navbar').css('background', '#fff');
+                }
+            });
         });
     </script>
     </body>
