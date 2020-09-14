@@ -32,20 +32,17 @@
     </div>
     <div class="container">
         <div class="row table">
-            <table class="table table-striped justify-content-center">
+            <table class="table table-striped justify-content-center table-responsive" id="linkTable">
                 <thead class="thead-dark">
                     <tr>
+                        <th scope="col ">S.N.</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Noticfication Title</th>
+                        <th scope="col " style=" width:400px;">Noticfication Title</th>
                         <th scope="col">Link</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>02/02/2020</td>
-                        <td>Revised guidelines for International</td>
-                        <td><a href="###">####</a></td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
@@ -58,8 +55,29 @@
         </div>
     </footer>
     <!-- script -->
-    <script src="./assets/js/jquerry.js "></script>
-    <script src="./assets/js/bootstrap.min.js "></script>
+    <script src="<script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var url = "https://api.rootnet.in/covid19-in/notifications";
+            $.getJSON(url, function(data) {
+                var number = 1;
+                var helpData = '';
+                $.each(data.data.notifications, (key, value) => {
+                    helpData += '<tr>';
+                    helpData += '<th>' + number + '</th>';
+                    helpData += '<th>' + value.title.slice(0, 9) + '</th>';
+                    helpData += '<th>' + value.title.slice(10, value.title.length) + '</th>';
+                    helpData += '<th>' + value.link + '</th>';
+                    helpData += '</tr>';
+                    number++;
+                });
+                $('#linkTable').append(helpData);
+            });
+
+        });
+    </script>
     </body>
 
     </html>

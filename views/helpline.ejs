@@ -48,7 +48,7 @@
     </section>
     <div class="container" style="margin-top: 30px;">
         <div class="row table">
-            <table class="table table-striped justify-content-center">
+            <table class="table table-striped justify-content-center" id="helplineTable">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -58,7 +58,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
+                        <td>1</td>
                         <td>Mark</td>
                         <td>Otto</td>
                     </tr>
@@ -73,6 +73,29 @@
             </div>
         </div>
     </footer>
+    <script src="<script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var url = "https://api.rootnet.in/covid19-in/contacts";
+            $.getJSON(url, function(data) {
+                var number = 1;
+                var helpData = '';
+                $.each(data.data.contacts.regional, (key, value) => {
+                    helpData += '<tr>';
+                    helpData += '<th>' + number + '</th>';
+                    helpData += '<th>' + value.loc + '</th>';
+                    helpData += '<th>' + value.number + '</th>';
+                    helpData += '</tr>';
+                    number++;
+                });
+                $('#helplineTable').append(helpData);
+            });
+
+        });
+    </script>
+
     </body>
 
     </html>

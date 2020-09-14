@@ -18,10 +18,12 @@
   "homepage": "https://github.com/smileynanda99/covid-19#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chart.js": "^2.9.3",
     "csv-parser": "^2.3.3",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "https": "^1.0.0"
+    "https": "^1.0.0",
+    "mongoose": "^5.10.5"
   }
 }

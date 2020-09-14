@@ -41,6 +41,9 @@
         </div>
         <div class="row text-center justify-content-center" style="padding: 3%;">
             <h4>GRaph here</h4>
+            <div class="container">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
     <footer class="footer">
@@ -135,6 +138,39 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="<script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        var labelArray = [];
+        var dataArray = [];
+        $.get("/data", function(data) {
+
+            labelArray = data.labelArray;
+            dataArray = data.dataArray;
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'line',
+
+                // The data for our dataset
+                data: {
+                    labels: labelArray,
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgb(0, 0, 0)',
+                        data: dataArray
+                    }]
+                },
+
+                // Configuration options go here
+                options: {}
+            });
+        });
+    </script>
     </body>
 
     </html
