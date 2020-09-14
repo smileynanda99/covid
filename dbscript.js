@@ -10,7 +10,7 @@ const dataSchema = new mongoose.Schema({
     patientId: Number,
     reportedOn: String,
     onsetEstimate: String,
-    ageEstimate: Number,
+    ageEstimate: String,
     gender: String,
     city: String,
     district: String,
@@ -29,22 +29,22 @@ fs.createReadStream(__dirname + "/covid.csv")
         })
     )
     .on("data", (dataRow) => {
+
         const patient = new Patient({
-            patientId: dataRow[0],
-            reportedOn: dataRow[1],
-            onsetEstimate: dataRow[2],
-            ageEstimate: dataRow[3],
-            gender: dataRow[4],
-            city: dataRow[5],
-            district: dataRow[6],
-            state: dataRow[7],
-            status: dataRow[8],
-            notes: dataRow[9],
-            contractedFrom: dataRow[10]
+            patientId: dataRow.patientId,
+            reportedOn: dataRow.reportedOn,
+            onsetEstimate: dataRow.onsetEstimate,
+            ageEstimate: dataRow.ageEstimate,
+            gender: dataRow.gender,
+            city: dataRow.dataRow,
+            district: dataRow.district,
+            state: dataRow.state,
+            status: dataRow.status,
+            notes: dataRow.notes,
+            contractedFrom: dataRow.contractedFrom
         });
         patient.save();
-
     })
     .on("end", () => {
-        console.log("successfully insert");
+        console.log(csvData);
     });
