@@ -30,7 +30,26 @@
             <h1>Anaylsis</h1>
         </div>
     </div>
+    <div class="container" style="margin-top: 30px;">
+        <div class="row table">
+            <table class="table table-striped justify-content-center" id="hospitalTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">State Name</th>
+                        <th scope="col">Rural Hospitals</th>
+                        <th scope="col">Rural Beds</th>
+                        <th scope="col">Urban Hospitals</th>
+                        <th scope="col">Urban Beds</th>
+                        <th scope="col">Total Hospitals</th>
+                        <th scope="col">Total Beds</th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                </tbody>
+            </table>
+        </div>
+    </div>
     <footer class="footer">
         <div class="container ">
             <div class="row text-center justify-content-center ">
@@ -40,6 +59,30 @@
     </footer>
 
     <!-- script -->
-    <script src="./assets/js/jquerry.js "></script>
-    <script src="./assets/js/bootstrap.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js " integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin=" anonymous "></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var url = "https://api.rootnet.in/covid19-in/hospitals/beds";
+            $.getJSON(url, function(data) {
+                var helpData = '';
+                $.each(data.data.regional, (key, value) => {
+                    helpData += '<tr>';
+                    helpData += '<th>' + value.state + '</th>';
+                    helpData += '<th>' + value.ruralHospitals + '</th>';
+                    helpData += '<th>' + value.ruralBeds + '</th>';
+                    helpData += '<th>' + value.urbanHospitals + '</th>';
+                    helpData += '<th>' + value.urbanBeds + '</th>';
+                    helpData += '<th>' + value.totalHospitals + '</th>';
+                    helpData += '<th>' + value.totalBeds + '</th>';
+                    helpData += '</tr>';
+
+                    console.log(value.state);
+                });
+                $('#hospitalTable').append(helpData);
+            });
+
+        });
+    </script>
     </body>
