@@ -1,0 +1,6 @@
+Deploy link:=
+https://secure-stream-90693.herokuapp.com/
+
+
+git rpo:=
+https://github.com/smileynanda99/covid
