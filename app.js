@@ -40,7 +40,16 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var helpNumber = [];
+// Patient.find({ state: "Rajasthan" }, (err, result) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         // console.log(result);
+//         dataArray.push(result.length);
+//     }
+// });
+// console.log(dataArray);
+
 app.get("/", (req, res) => {
     res.render("home");
 });
@@ -64,19 +73,23 @@ app.post("/data", (req, res) => {
     const state = req.body.state;
     var date1 = date.date_formate(new Date(req.body.date1));
     var date2 = date.date_formate(new Date(req.body.date2));
+    dataArray = [];
+    labelArray = [];
     for (date1; date.dates_compare(date1, date2);) {
         Patient.find({ state: state, date: date1 }, (err, result) => {
             if (err) {
                 console.log(err);
             } else {
-                console.log(result);
+                // console.log(result);
                 dataArray.push(result.length);
-                labelArray.push(date1);
             }
         });
         //console.log(date1, date2);
+        labelArray.push(date1);
         date1 = date.date_increment(date1);
     }
+    console.log(dataArray);
+    console.log(labelArray);
     res.redirect("/gragh");
 
 });
