@@ -9,6 +9,7 @@ module.exports.date_formate = (date) => {
 }
 
 module.exports.date_increment = (date) => {
+    // console.log("increment");
     var ar = date.split("/");
     date = new Date(ar[1] + "/" + ar[0] + "/" + ar[2]);
     date.setDate(date.getDate() + 1);

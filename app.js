@@ -82,27 +82,32 @@ app.post("/data", (req, res) => {
     labelArray = [];
     for (date1; date.dates_compare(date1, date2);) {
 
-        Patient.find({ state: state, reportedOn: date1 + "", ageEstimate: { $gte: age1 + "", $lte: age2 + "" } }, (err, result) => {
+        Patient.find({ state: state, reportedOn: date1 + "", ageEstimate: { $gte: +age1 + "", $lte: age2 + "" } }, (err, result) => {
             if (err) {
                 console.log(err);
             } else {
                 // console.log(state + typeof(state));
-                console.log(date1 + typeof(date1 + ""));
+                //console.log(date1 + typeof(date1));
                 // console.log(age1 + typeof(age1 + ""));
                 // console.log(age2 + typeof(age2 + ""));
-                console.log(result);
+                //console.log(result);
                 if (result) {
                     dataArray.push(result.length);
+                } else {
+                    dataArray.push(0);
                 }
             }
         });
         console.log(date.dates_compare(date1, date2));
-        console.log(date1, date2);
+        console.log(state, date1, date2, " => ", age1, age2);
         labelArray.push(date1);
         date1 = date.date_increment(date1);
     }
-    console.log(dataArray);
-    // console.log(labelArray);
+    console.log("loopend");
+    setTimeout(() => {
+            console.log(dataArray);
+        }, 1000)
+        // console.log(labelArray);
     res.redirect("/gragh");
 
 });
