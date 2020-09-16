@@ -18,11 +18,12 @@ var labelArray = [];
 //mongoose.connect("mongodb+srv://admin-teamJs:teamjs@99@cluster0.lxra1.mongodb.net/Covid19DB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect("mongodb://localhost:27017/Covid19DB", { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.set("useCreateIndex", true);
+
 const dataSchema = new mongoose.Schema({
     patientId: Number,
     reportedOn: String,
     onsetEstimate: String,
-    ageEstimate: Number,
+    ageEstimate: String,
     gender: String,
     city: String,
     district: String,
@@ -40,7 +41,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Patient.find({ state: "Rajasthan" }, (err, result) => {
+// Patient.find({ state: "Rajasthan", reportedOn: "04/03/2020", ageEstimate: { $gte: 60 + "", $lte: 80 + "" } }, (err, result) => {
 //     if (err) {
 //         console.log(err);
 //     } else {
@@ -48,7 +49,11 @@ app.use(bodyParser.json());
 //         dataArray.push(result.length);
 //     }
 // });
-// console.log(dataArray);
+// setTimeout(() => {
+
+//     console.log(dataArray);
+
+// }, 50)
 
 app.get("/", (req, res) => {
     res.render("home");
@@ -70,26 +75,34 @@ app.post("/data", (req, res) => {
         age2 = 100;
     }
 
-    const state = req.body.state;
+    const state = String(req.body.state);
     var date1 = date.date_formate(new Date(req.body.date1));
     var date2 = date.date_formate(new Date(req.body.date2));
     dataArray = [];
     labelArray = [];
     for (date1; date.dates_compare(date1, date2);) {
-        Patient.find({ state: state, date: date1 }, (err, result) => {
+
+        Patient.find({ state: state, reportedOn: date1 + "", ageEstimate: { $gte: age1 + "", $lte: age2 + "" } }, (err, result) => {
             if (err) {
                 console.log(err);
             } else {
-                // console.log(result);
-                dataArray.push(result.length);
+                // console.log(state + typeof(state));
+                console.log(date1 + typeof(date1 + ""));
+                // console.log(age1 + typeof(age1 + ""));
+                // console.log(age2 + typeof(age2 + ""));
+                console.log(result);
+                if (result) {
+                    dataArray.push(result.length);
+                }
             }
         });
-        //console.log(date1, date2);
+        console.log(date.dates_compare(date1, date2));
+        console.log(date1, date2);
         labelArray.push(date1);
         date1 = date.date_increment(date1);
     }
     console.log(dataArray);
-    console.log(labelArray);
+    // console.log(labelArray);
     res.redirect("/gragh");
 
 });
@@ -115,6 +128,6 @@ app.get("/helpline", (req, res) => {
 });
 
 
-app.listen(port || process.env.PORT, () => {
+app.listen(process.env.PORT || port, () => {
     console.log(`server is running at port :${port}`);
 });
