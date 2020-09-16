@@ -8,7 +8,7 @@ module.exports.date_formate = (date) => {
     return ((date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()));
 }
 
-module.exports.date_increment = (date) => {
+module.exports.date_increment = async(date) => {
     // console.log("increment");
     var ar = date.split("/");
     date = new Date(ar[1] + "/" + ar[0] + "/" + ar[2]);

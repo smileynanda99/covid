@@ -41,19 +41,27 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Patient.find({ state: "Rajasthan", reportedOn: "04/03/2020", ageEstimate: { $gte: 60 + "", $lte: 80 + "" } }, (err, result) => {
+// Patient.find({ state: "Punjab", reportedOn: "30/03/2020", ageEstimate: { $gte: "60", $lte: "69" } }, (err, result) => {
 //     if (err) {
 //         console.log(err);
 //     } else {
-//         // console.log(result);
-//         dataArray.push(result.length);
+//         // console.log(state + typeof(state));
+//         //console.log(date1 + typeof(date1));
+//         // console.log(age1 + typeof(age1 + ""));
+//         // console.log(age2 + typeof(age2 + ""));
+//         //console.log(result);
+//         if (result) {
+//             dataArray.push(result.length);
+//         } else {
+//             dataArray.push(0);
+//         }
 //     }
 // });
 // setTimeout(() => {
 
 //     console.log(dataArray);
 
-// }, 50)
+// }, 500)
 
 app.get("/", (req, res) => {
     res.render("home");
@@ -86,6 +94,7 @@ app.post("/data", (req, res) => {
             if (err) {
                 console.log(err);
             } else {
+                console.log(state, date1, date2, " => ", age1, age2);
                 // console.log(state + typeof(state));
                 //console.log(date1 + typeof(date1));
                 // console.log(age1 + typeof(age1 + ""));
