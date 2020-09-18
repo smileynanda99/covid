@@ -112,8 +112,8 @@
                 <button class="btn btn-success" style="margin-top: 30px;" id="college">GET</button>
             </div>
         </div>
-        <div class="row table text-center">
-            <table class="table table-striped justify-content-center" id="collegeTable">
+        <div class="row table text-center ">
+            <table class="ctable table table-striped justify-content-center" id="collegeTable">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">State Name</th>
@@ -124,7 +124,7 @@
                         <th scope="col">Hospitals Beds</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="cbody">
 
                 </tbody>
             </table>
@@ -178,7 +178,7 @@
                     helpData += '<th>' + value.urbanBeds + '</th>';
                     helpData += '<th>' + value.totalHospitals + '</th>';
                     helpData += '<th>' + value.totalBeds + '</th>';
-                    helpData += '</tr>';
+                    helpData += '</tr> ';
 
                 });
                 $('#hospitalTable').append(helpData);
@@ -189,7 +189,7 @@
                 var url = "https://api.rootnet.in/covid19-in/hospitals/medical-colleges";
                 $.getJSON(url, function(data) {
                     var helpData = '';
-
+                    $(".cbody").html(" <thead class='thead-dark'> <tr>  <th scope='col'>State Name</th> <th scope='col'>Institute Name</th> <th scope='col'>City</th> <th scope='col'>Type</th><th scope='col'>Admission Capacity</th><th scope='col'>Hospitals Beds</th> </tr> </thead>");
 
                     $.each(data.data.medicalColleges, (key, value) => {
 
@@ -202,11 +202,10 @@
                             helpData += '<th>' + value.admissionCapacity + '</th>';
                             helpData += '<th>' + value.hospitalBeds + '</th>';
                             helpData += '</tr>';
-
-
                         }
                     });
-                    $('#collegeTable').html(helpData);
+                    $("#cbody").empty();
+                    $('#collegeTable').append(helpData);
                 });
 
 

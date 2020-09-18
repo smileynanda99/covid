@@ -41,27 +41,27 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Patient.find({ state: "Punjab", reportedOn: "30/03/2020", ageEstimate: { $gte: "60", $lte: "69" } }, (err, result) => {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         // console.log(state + typeof(state));
-//         //console.log(date1 + typeof(date1));
-//         // console.log(age1 + typeof(age1 + ""));
-//         // console.log(age2 + typeof(age2 + ""));
-//         //console.log(result);
-//         if (result) {
-//             dataArray.push(result.length);
-//         } else {
-//             dataArray.push(0);
-//         }
-//     }
-// });
-// setTimeout(() => {
+Patient.find({ state: "Punjab", reportedOn: "30/03/2020", ageEstimate: { $gte: "60", $lte: "69" } }, (err, result) => {
+    if (err) {
+        console.log(err);
+    } else {
+        // console.log(state + typeof(state));
+        //console.log(date1 + typeof(date1));
+        // console.log(age1 + typeof(age1 + ""));
+        // console.log(age2 + typeof(age2 + ""));
+        //console.log(result);
+        if (result) {
+            dataArray.push(result.length);
+        } else {
+            dataArray.push(0);
+        }
+    }
+});
+setTimeout(() => {
 
-//     console.log(dataArray);
+    console.log(dataArray);
 
-// }, 500)
+}, 500)
 
 app.get("/", (req, res) => {
     res.render("home");
@@ -88,7 +88,7 @@ app.post("/data", (req, res) => {
     var date2 = date.date_formate(new Date(req.body.date2));
     dataArray = [];
     labelArray = [];
-    for (date1; date.dates_compare(date1, date2);) {
+    for (date1; date.dates_compare(date1, date2); date1 = date.date_increment(date1)) {
 
         Patient.find({ state: state, reportedOn: date1 + "", ageEstimate: { $gte: +age1 + "", $lte: age2 + "" } }, (err, result) => {
             if (err) {
@@ -103,17 +103,19 @@ app.post("/data", (req, res) => {
                 if (result) {
                     dataArray.push(result.length);
                 } else {
-                    dataArray.push(0);
+                    dataArray.push(01);
                 }
             }
         });
+        // date1 = date.date_increment(date1);
+        labelArray.push(date1);
         console.log(date.dates_compare(date1, date2));
         console.log(state, date1, date2, " => ", age1, age2);
-        labelArray.push(date1);
-        date1 = date.date_increment(date1);
+
     }
-    console.log("loopend");
+
     setTimeout(() => {
+            console.log("loopend");
             console.log(dataArray);
         }, 1000)
         // console.log(labelArray);
@@ -140,7 +142,6 @@ app.get("/helpline", (req, res) => {
 
     res.render("helpline");
 });
-
 
 app.listen(process.env.PORT || port, () => {
     console.log(`server is running at port :${port}`);
